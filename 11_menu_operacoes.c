@@ -4,18 +4,17 @@ int main(void) {
     int opcao;
     double a, b;
 
-    printf("=== MENU ===\n");
-    printf("1 - Somar\n2 - Subtrair\n3 - Multiplicar\n4 - Dividir\n");
-    printf("Escolha: ");
-    if (scanf("%d", &opcao) != 1) {
-        printf("Entrada invalida\n");
-        return 1;
-    }
-
-    if (opcao < 1 || opcao > 4) {
-        printf("Opcao invalida\n");
-        return 0;
-    }
+    do {
+        printf("=== MENU ===\n");
+        printf("1 - Somar\n2 - Subtrair\n3 - Multiplicar\n4 - Dividir\n");
+        printf("Escolha: ");
+        if (scanf("%d", &opcao) != 1) {
+            printf("Entrada invalida\n");
+            return 1;
+        }
+        if (opcao < 1 || opcao > 4)
+            printf("Opcao invalida! Tente novamente.\n\n");
+    } while (opcao < 1 || opcao > 4);
 
     printf("Digite dois numeros: ");
     if (scanf("%lf %lf", &a, &b) != 2) {

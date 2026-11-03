@@ -7,6 +7,10 @@ int main(void) {
         printf("Entrada invalida\n");
         return 1;
     }
+    if (a == b && b == c) {
+        printf("Os tres valores sao iguais\n");
+        return 0;
+    }
     maior = a;
     if (b > maior) maior = b;
     if (c > maior) maior = c;

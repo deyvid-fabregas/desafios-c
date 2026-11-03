@@ -2,15 +2,15 @@
 
 int main(void) {
     int n, i;
-    printf("Digite um inteiro positivo: ");
-    if (scanf("%d", &n) != 1) {
-        printf("Entrada invalida\n");
-        return 1;
-    }
-    if (n <= 0) {
-        printf("Valor invalido\n");
-        return 0;
-    }
+    do {
+        printf("Digite um inteiro positivo: ");
+        if (scanf("%d", &n) != 1) {
+            printf("Entrada invalida\n");
+            return 1;
+        }
+        if (n <= 0)
+            printf("Valor invalido! Tente novamente.\n");
+    } while (n <= 0);
     printf("Divisores de %d: ", n);
     for (i = 1; i <= n; i++)
         if (n % i == 0)

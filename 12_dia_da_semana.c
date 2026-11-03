@@ -2,11 +2,15 @@
 
 int main(void) {
     int n;
-    printf("Digite um numero de 1 a 7: ");
-    if (scanf("%d", &n) != 1) {
-        printf("Entrada invalida\n");
-        return 1;
-    }
+    do {
+        printf("Digite um numero de 1 a 7: ");
+        if (scanf("%d", &n) != 1) {
+            printf("Entrada invalida\n");
+            return 1;
+        }
+        if (n < 1 || n > 7)
+            printf("Opcao invalida! Tente novamente.\n");
+    } while (n < 1 || n > 7);
     switch (n) {
         case 1: printf("Domingo\n"); break;
         case 2: printf("Segunda-feira\n"); break;
@@ -15,7 +19,6 @@ int main(void) {
         case 5: printf("Quinta-feira\n"); break;
         case 6: printf("Sexta-feira\n"); break;
         case 7: printf("Sabado\n"); break;
-        default: printf("Opcao invalida\n");
     }
     return 0;
 }

@@ -3,15 +3,15 @@
 int main(void) {
     int qtd, i;
     double n, maior = 0, menor = 0;
-    printf("Quantos numeros deseja digitar? ");
-    if (scanf("%d", &qtd) != 1) {
-        printf("Entrada invalida\n");
-        return 1;
-    }
-    if (qtd <= 0) {
-        printf("Quantidade invalida\n");
-        return 0;
-    }
+    do {
+        printf("Quantos numeros deseja digitar? ");
+        if (scanf("%d", &qtd) != 1) {
+            printf("Entrada invalida\n");
+            return 1;
+        }
+        if (qtd <= 0)
+            printf("Quantidade invalida! Tente novamente.\n");
+    } while (qtd <= 0);
     for (i = 1; i <= qtd; i++) {
         printf("Numero %d: ", i);
         if (scanf("%lf", &n) != 1) {

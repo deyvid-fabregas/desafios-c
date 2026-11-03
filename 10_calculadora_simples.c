@@ -8,11 +8,15 @@ int main(void) {
         printf("Entrada invalida\n");
         return 1;
     }
-    printf("Digite a operacao (+, -, *, /): ");
-    if (scanf(" %c", &op) != 1) {
-        printf("Entrada invalida\n");
-        return 1;
-    }
+    do {
+        printf("Digite a operacao (+, -, *, /): ");
+        if (scanf(" %c", &op) != 1) {
+            printf("Entrada invalida\n");
+            return 1;
+        }
+        if (op != '+' && op != '-' && op != '*' && op != '/')
+            printf("Operacao invalida! Tente novamente.\n");
+    } while (op != '+' && op != '-' && op != '*' && op != '/');
     printf("Digite o segundo numero: ");
     if (scanf("%lf", &b) != 1) {
         printf("Entrada invalida\n");
@@ -30,7 +34,6 @@ int main(void) {
             printf("Erro: divisao por zero!\n");
         else
             printf("Resultado: %.2f\n", a / b);
-    } else
-        printf("Operacao invalida\n");
+    }
     return 0;
 }
