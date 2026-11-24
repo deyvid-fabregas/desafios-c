@@ -1,17 +1,17 @@
 # Desafios de lógica de programação em C
 
-Uma coleção de 30 exercícios introdutórios resolvidos em C. Cada desafio está
-em um arquivo independente e pode ser compilado e executado separadamente. Os
-programas praticam conceitos fundamentais de programação estruturada, desde
-operações aritméticas e decisões até laços, validação de entrada e pequenos
-jogos.
+Uma coleção de 50 exercícios introdutórios resolvidos em C. Cada desafio está
+em um arquivo próprio ou, nos dois exercícios de modularização, em uma pasta
+própria. Os programas praticam programação estruturada, com operações
+aritméticas, decisões, laços, funções, vetores e matrizes.
 
 ## Objetivos
 
-- Praticar entrada e saída de dados com `printf` e `scanf`.
+- Praticar entrada e saída de dados pelo terminal.
 - Trabalhar com variáveis, operadores aritméticos e expressões.
 - Usar estruturas condicionais (`if`/`else` e `switch`).
 - Criar repetições com laços (`for`, `while` e `do while`).
+- Separar responsabilidades em funções e módulos e organizar dados em vetores e matrizes.
 - Resolver problemas pequenos, aumentando a complexidade gradualmente.
 
 ## Pré-requisitos
@@ -40,6 +40,20 @@ No Windows, execute o arquivo gerado como `desafio01.exe`.
 Para testar outro exercício, substitua o nome do arquivo `.c` e o nome do
 executável.
 
+Os desafios 40 e 45 usam funções de `math.h`. Coloque `-lm` depois do nome do
+arquivo ao compilar com GCC:
+
+```bash
+gcc -std=c17 -Wall -Wextra -Wpedantic 40_calculadora_cientifica.c -lm -o desafio40
+```
+
+Para os desafios 43 e 44, compile os dois arquivos `.c` da pasta juntos:
+
+```bash
+gcc -std=c17 -Wall -Wextra -Wpedantic 43_sistema_pagamento/*.c -o desafio43
+gcc -std=c17 -Wall -Wextra -Wpedantic 44_calculadora_modular/*.c -o desafio44
+```
+
 ## Compilar todos os desafios
 
 O comando a seguir cria a pasta `build/` e compila cada arquivo nela, mantendo
@@ -48,7 +62,10 @@ os executáveis organizados e separados dos fontes:
 ```bash
 mkdir -p build
 for f in *.c; do
-  gcc -std=c17 -Wall -Wextra -Wpedantic "$f" -o "build/${f%.c}" || exit 1
+  gcc -std=c17 -Wall -Wextra -Wpedantic "$f" -lm -o "build/${f%.c}" || exit 1
+done
+for d in 43_sistema_pagamento 44_calculadora_modular; do
+  gcc -std=c17 -Wall -Wextra -Wpedantic "$d"/*.c -o "build/$d" || exit 1
 done
 ```
 
@@ -105,10 +122,51 @@ Por exemplo, para executar o primeiro desafio após a compilação:
 | 29 | [29_fibonacci.c](29_fibonacci.c) | Sequência de Fibonacci |
 | 30 | [30_jogo_adivinhacao.c](30_jogo_adivinhacao.c) | Jogo de adivinhação com tentativas |
 
+### Tipos de dados, operadores e condicionais
+
+| # | Arquivo ou pasta | Conceito praticado |
+|---|------------------|--------------------|
+| 31 | [31_salario_liquido.c](31_salario_liquido.c) | Dois descontos percentuais sobre o salário bruto |
+| 32 | [32_conversor_armazenamento.c](32_conversor_armazenamento.c) | Conversão de GB para MB e KB |
+| 33 | [33_status_estoque.c](33_status_estoque.c) | Verificação de estoque com `if/else` e ternário |
+| 34 | [34_analise_pedido.c](34_analise_pedido.c) | Cálculo de frete e total do pedido |
+| 35 | [35_terminal_atendimento.c](35_terminal_atendimento.c) | Encaminhamento por setor com `switch` |
+
+### Laços e controle de entrada
+
+| # | Arquivo ou pasta | Conceito praticado |
+|---|------------------|--------------------|
+| 36 | [36_login_tentativas.c](36_login_tentativas.c) | Senha numérica com no máximo três tentativas |
+| 37 | [37_carrinho_compras.c](37_carrinho_compras.c) | Contagem de produtos e soma de preços |
+| 38 | [38_monitoramento_servidor.c](38_monitoramento_servidor.c) | Classificação de percentuais inteiros de uso da CPU |
+| 39 | [39_processamento_vendas.c](39_processamento_vendas.c) | Faturamento e ticket médio com valor sentinela |
+
+### Funções, bibliotecas e módulos
+
+| # | Arquivo ou pasta | Conceito praticado |
+|---|------------------|--------------------|
+| 40 | [40_calculadora_cientifica.c](40_calculadora_cientifica.c) | Raiz quadrada, quadrado e arredondamentos |
+| 41 | [41_adivinhacao_aleatoria.c](41_adivinhacao_aleatoria.c) | Sorteio de 1 a 100 e dicas a cada palpite incorreto |
+| 42 | [42_validador_opcao.c](42_validador_opcao.c) | Validação de S/N com `toupper` e `do while` |
+| 43 | [43_sistema_pagamento](43_sistema_pagamento) | Módulo de pagamento com desconto via PIX |
+| 44 | [44_calculadora_modular](44_calculadora_modular) | Módulo de operações aritméticas com validação de divisão |
+
+### Vetores e matrizes
+
+| # | Arquivo ou pasta | Conceito praticado |
+|---|------------------|--------------------|
+| 45 | [45_analise_temperaturas.c](45_analise_temperaturas.c) | Média, extremos e contagem de temperaturas acima da média |
+| 46 | [46_controle_vendas.c](46_controle_vendas.c) | Funções de análise de um vetor de vendas |
+| 47 | [47_busca_codigo.c](47_busca_codigo.c) | Busca sequencial do primeiro índice de um código |
+| 48 | [48_sistema_notas.c](48_sistema_notas.c) | Matriz de notas e situação de cada aluno |
+| 49 | [49_mapa_assentos.c](49_mapa_assentos.c) | Reserva de assentos em uma matriz de 4 × 5 |
+| 50 | [50_painel_estacionamento.c](50_painel_estacionamento.c) | Ocupação, liberação e contagem de vagas em três setores |
+
 ## Observações
 
-- Cada arquivo contém seu próprio `main`; compile um desafio por vez.
+- Cada desafio tem sua própria função `main`.
+- Os desafios 31 a 50 compartilham as rotinas de leitura de `entrada.h`.
+- Use ponto como separador decimal ao informar valores reais.
 - Os programas recebem dados pelo terminal e exibem mensagens em português.
-- Quando uma entrada não pode ser lida, os programas informam o erro e
-  encerram a execução.
+- Os programas validam as entradas e sinalizam erros de leitura.
 - Os executáveis e arquivos intermediários não fazem parte do repositório.
